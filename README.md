@@ -85,3 +85,18 @@ project can also be run with Docker:
 docker build -t ris-pre-screener .
 docker run --rm -p 8501:8501 ris-pre-screener
 ```
+
+## Privacy, license, and support
+
+Do not commit RIS files, CSV exports, notebooks, credentials, or personal
+research information. See [SECURITY.md](SECURITY.md) for safe usage and
+vulnerability reporting.
+
+This project is released under the [MIT License](LICENSE).
+
+If this tool saves you time, you can support development here:
+
+[Buy me a coffee](https://www.buymeacoffee.com/YOUR_BUYMEACOFFEE_USERNAME)
+
+Replace `YOUR_BUYMEACOFFEE_USERNAME` in this file and `.github/FUNDING.yml`
+with your actual username before publishing.
