@@ -96,7 +96,5 @@ This project is released under the [MIT License](LICENSE).
 
 If this tool saves you time, you can support development here:
 
-[Buy me a coffee](https://www.buymeacoffee.com/YOUR_BUYMEACOFFEE_USERNAME)
+[Buy me a coffee](https://www.buymeacoffee.com/vincentlill)
 
-Replace `YOUR_BUYMEACOFFEE_USERNAME` in this file and `.github/FUNDING.yml`
-with your actual username before publishing.
