@@ -1,64 +1,87 @@
 # RIS Pre-Screener
 
-A simple, topic-independent application for transparent first-pass screening of RIS exports.
+This tool helps you make a first, keyword-based decision about articles in a
+RIS file. It works locally on your computer and does not upload your literature
+data anywhere.
 
-## Quick start
+## Easiest way to use it
+
+### 1. Install Python
+
+Download Python 3.10 or newer from <https://www.python.org/downloads/>.
+During installation on Windows, enable **Add Python to PATH**.
+
+### 2. Download this repository
+
+On GitHub, click **Code → Download ZIP** and unzip the downloaded folder.
+
+### 3. Open a terminal in the unzipped folder
+
+- **Windows:** right-click the folder and choose **Open in Terminal**
+- **macOS:** open Terminal, type `cd ` (including the space), drag the folder
+  into the Terminal window, and press Enter
+
+### 4. Install the application
+
+Run these commands:
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+```
+
+Activate the environment:
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate
+```
+
+Then install the required packages:
+
+```bash
 pip install -e .
+```
+
+### 5. Start the application
+
+```bash
 streamlit run app.py
 ```
 
-Upload a RIS file, create any number of keyword groups, and run the screening.
-The app provides an INCLUDE CSV and a CSV containing all decisions. The columns
-`hits_*`, `exclude_hits`, and `reason` explain every decision.
+A browser window opens automatically. If it does not, copy the local address
+shown in the terminal (usually `http://localhost:8501`) into your browser.
 
-## Rules
+## Using the application
 
-- Only `title` and `abstract` are searched.
-- Terms within a group are joined with OR.
-- Required groups are joined with AND.
-- Exclude matches take precedence.
-- Explicitly unsupported languages are excluded by default, while missing language is allowed.
-- Enabling the language option also excludes records with missing language.
+1. Choose your `.ris` file.
+2. Enter a name for each keyword group, for example `Population` or
+   `Intervention`.
+3. Enter one keyword per line in each group.
+4. Leave **Required** enabled when every included record must match that group.
+5. Click **Add keyword group** when you need another group.
+6. Optionally add exclusion keywords, one per line.
+7. Click **Run screening**.
+8. Download the INCLUDE CSV or the complete decision list.
 
-The interface contains no topic-specific groups or keywords. All criteria are
-entered by the user for each screening project.
+Group names must be unique and every group must contain at least one keyword.
+The app searches the title and abstract. Keywords within a group use OR;
+required groups use AND. Exclusion keywords always take priority.
 
-## CLI and Docker
+## Troubleshooting
 
-```json
-{
-  "include_groups": {
-    "Population": ["term one", "term two"],
-    "Intervention": ["term three"]
-  },
-  "required_groups": ["Population", "Intervention"],
-  "exclude_terms": ["irrelevant term"]
-}
-```
+If `python` is not recognized, try `python3` instead. If the browser page is
+blank, stop the terminal command with `Ctrl+C` and start it again with
+`streamlit run app.py`.
 
-```bash
-ris-prescreen input.ris config.json --output results/screening
-```
+## For developers
+
+The reusable code is in `src/ris_prescreener/`, tests are in `tests/`, and the
+project can also be run with Docker:
 
 ```bash
 docker build -t ris-pre-screener .
 docker run --rm -p 8501:8501 ris-pre-screener
 ```
-
-All processing happens locally.
-
-## Repository layout
-
-```text
-app.py                 # Streamlit launcher
-prescreen.py           # CLI launcher
-src/ris_prescreener/   # Application and screening library
-tests/                 # Automated tests
-```
-
-Input files, research material, generated results, notebooks, and secrets are
-excluded by `.gitignore` and should never be committed.
