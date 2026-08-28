@@ -4,6 +4,8 @@ This tool helps you make a first, keyword-based decision about articles in a
 RIS file. It works locally on your computer and does not upload your literature
 data anywhere.
 
+[Buy me a coffee](https://www.buymeacoffee.com/vincentlill)
+
 ## Easiest way to use it
 
 ### 1. Install Python
@@ -96,5 +98,5 @@ This project is released under the [MIT License](LICENSE).
 
 If this tool saves you time, you can support development here:
 
-[Buy me a coffee](https://www.buymeacoffee.com/vincentlill)
+
 
