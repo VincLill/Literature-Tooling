@@ -1,0 +1,15 @@
+\.vscode
+search_terms.yaml
+.env
+.venv
+__pycache__/
+*.py[cod]
+.env.*
+!.env.example
+data/
+*.ris
+*.csv
+*.ipynb
+*.html
+*.egg-info/
+.pytest_cache/
